@@ -28,10 +28,13 @@ public class App {
 		sistema.addCaixa(cx3);
 		
 		ArrayList<Caixa> caixas = sistema.getCaixas();
+		int disponivel = 0;
 		
 		for (Caixa caixa : caixas) {
-			
-		}or
+			if(caixa.disponivel()==false) {
+				disponivel++;
+			}
+		}
 		
 	}
 
