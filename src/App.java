@@ -27,14 +27,13 @@ public class App {
 		sistema.addCaixa(cx2);
 		sistema.addCaixa(cx3);
 		
-		ArrayList<Caixa> caixas = sistema.getCaixas();
-		int disponivel = 0;
+		System.out.println(sistema.mostrarFila());
 		
-		for (Caixa caixa : caixas) {
-			if(caixa.disponivel()==false) {
-				disponivel++;
-			}
-		}
+		sistema.nextClientIdoso();
+		
+		System.out.println(sistema.mostrarFila());
+		
+		
 		
 	}
 
