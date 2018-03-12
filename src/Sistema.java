@@ -1,11 +1,19 @@
 import java.util.ArrayList;
 
 public class Sistema {
-	
-	 static PureQueue<Cliente> fila = new PureQueue<>();
-	 static ArrayList<Caixa> caixas;
-	 
-	 
+
+	private static Sistema unicaInstancia = new Sistema();
+
+	private Sistema() {
+
+	}
+
+	public static Sistema getInstance() {
+		return unicaInstancia;
+	}
+
+	static PureQueue<Cliente> fila = new PureQueue<>();
+	static ArrayList<Caixa> caixas;
 
 	static PureQueue<Cliente> clientesIdosos(PureQueue p) {
 		Cliente aux;
@@ -64,11 +72,19 @@ public class Sistema {
 	public String mostrarFila() {
 		String msn = "";
 		for (int i = 0; i < fila.size(); i++) {
-			msn = msn + "\n" + fila.item(i).getNome() + " Idade: " + fila.item(i).getIdade();
+			msn = msn + fila.item(i).getNome() + " Idade: " + fila.item(i).getIdade() + "\n";
 		}
 
 		return msn;
 
+	}
+	
+	public boolean filaIsEmpty() {
+		if (fila.isEmpty()==true) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }
