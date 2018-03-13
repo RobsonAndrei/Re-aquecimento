@@ -87,6 +87,7 @@ public class MenuCliente extends JFrame {
 				textField.setText("");
 				textField_1.setText("");
 				
+				
 			}
 		});
 		btnEntrarNaFila.setBounds(254, 100, 295, 29);

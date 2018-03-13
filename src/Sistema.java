@@ -28,7 +28,7 @@ public class Sistema {
 
 	}
 
-	static void nextClientIdoso() {
+	static Cliente nextClientIdoso() {
 
 		if (!fila.isEmpty()) {
 			PureQueue<Cliente> filIdo = clientesIdosos(fila);
@@ -36,22 +36,27 @@ public class Sistema {
 				Cliente r = filIdo.dequeue();
 				fila.removeItem(r);
 				System.out.println("Atendimento para: " + r.toString());
+				return r;
 			} else {
 				Cliente r = fila.dequeue();
 				System.out.println("Atendimento para " + r.toString());
+				return r;
 			}
 
 		} else {
 			System.out.println("Sem clientes na fila no momento");
+			return null;
 		}
 	}
 
-	static void nextNormal() {
+	static Cliente nextNormal() {
 		if (!fila.isEmpty()) {
 			Cliente r = fila.dequeue();
 			System.out.println("Atendimento para " + r.toString());
+			return r;
 		} else {
 			System.out.println("Sem clientes na fila no momento");
+			return null;
 		}
 	}
 
