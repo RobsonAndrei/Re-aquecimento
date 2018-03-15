@@ -25,10 +25,17 @@ public class Interface {
 	private JTextField textField;
 	private JLabel lblListaDeClientes;
 	private JTextField textField_1;
+	private String texto;
+	private JTextPane textop;
 
 	/**
 	 * Launch the application.
 	 */
+
+	public void setJtext(JTextPane j) {
+		this.textop = j;
+	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,7 +59,10 @@ public class Interface {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+
 	private void initialize() {
+
+		Sistema.getInstance();
 
 		frmControleDeCaixa = new JFrame();
 		frmControleDeCaixa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,14 +82,12 @@ public class Interface {
 		textField.setBounds(227, 55, 48, 26);
 		frmControleDeCaixa.getContentPane().add(textField);
 		textField.setColumns(10);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(38, 145, 286, 398);
-		frmControleDeCaixa.getContentPane().add(textPane);
 
-		textPane.setText(Sistema.getInstance().mostrarFila());
-		
-		
+		textop = new JTextPane();
+		textop.setBounds(38, 145, 286, 398);
+		frmControleDeCaixa.getContentPane().add(textop);
+
+		textop.setText(Sistema.getInstance().mostrarFila());
 
 		lblListaDeClientes = new JLabel("Lista de Clientes");
 		lblListaDeClientes.setBounds(146, 117, 114, 16);
@@ -102,20 +110,22 @@ public class Interface {
 		btnPrximoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c1 = new Caixa(Integer.parseInt(textField.getText()));
-				if (c1.getId() >= 1 || c1.getId() <= 5) {
-					Sistema.getInstance();
+				if (c1.getId() >= 1 & c1.getId() <= 5) {
+
 					textField_1.setText(Sistema.getInstance().nextClientIdoso().getNome());
-					textPane.setText(Sistema.getInstance().mostrarFila());
-					
+					textop.setText(Sistema.getInstance().mostrarFila());
+
+				} else {
+
+					textField_1.setText(Sistema.getInstance().nextNormal().getNome());
+					textop.setText(Sistema.getInstance().mostrarFila());
 				}
 
 			}
-			
+
 		});
 		btnPrximoCliente.setBounds(453, 339, 165, 91);
 		frmControleDeCaixa.getContentPane().add(btnPrximoCliente);
-
-		
 
 	}
 }

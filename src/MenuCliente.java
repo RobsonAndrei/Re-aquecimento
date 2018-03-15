@@ -4,8 +4,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI.InternalFramePropertyChangeListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -18,10 +20,12 @@ public class MenuCliente extends JFrame {
 	private Cliente c1;
 	public static Sistema sis;
 	public static PureQueue<Cliente> fila;
+	
 
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +45,7 @@ public class MenuCliente extends JFrame {
 	public MenuCliente() {
 
 		sis = Sistema.getInstance();
+
 		
 
 		setTitle("MENU CLIENTE");
@@ -75,6 +80,9 @@ public class MenuCliente extends JFrame {
 
 		JButton btnEntrarNaFila = new JButton("ENTRAR NA FILA PARA ATENDIMENTO");
 		btnEntrarNaFila.addActionListener(new ActionListener() {
+			
+		
+			
 			String nome = "";
 			int idade;
 
@@ -84,10 +92,12 @@ public class MenuCliente extends JFrame {
 				c1 = new Cliente(nome, idade);
 				sis.addCliente(c1);
 				System.out.println(sis.mostrarFila());
+			
+				
+
 				textField.setText("");
 				textField_1.setText("");
-				
-				
+
 			}
 		});
 		btnEntrarNaFila.setBounds(254, 100, 295, 29);
